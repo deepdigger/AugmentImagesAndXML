@@ -9,11 +9,14 @@ import cv2
 import numpy as np
 import os
 import xml.etree.ElementTree as ET
+import StaticMethods as sm
 
-out_path = "bb_box.txt"
-data_path = "JPEGImages"
-img_path = "data_path\\VOC2012\\augmented_image"
-xml_path = "Annotations"
+xml_input_folder_path = "XML_Files_Input"
+picture_input_path = "Pictures"
+textfile_out_path = "AugmentedXmlDataPath.txt"
+augmented_img_path = "AugmentedImages"
+
+sm.createFolder(augmented_img_path)
 
 
 def pca_color_augmentation(image):
@@ -31,7 +34,7 @@ def pca_color_augmentation(image):
     return img_out
 
 
-xml_paths = [os.path.join(xml_path, s) for s in os.listdir(xml_path)]
+xml_paths = [os.path.join(xml_input_folder_path, s) for s in os.listdir(xml_input_folder_path)]
 # print(xml_paths)
 
 pwd_lines = []
@@ -40,7 +43,7 @@ for xml_file in xml_paths:
     element = et.getroot()
     element_objs = element.findall('object')
     element_filename = element.find('filename').text
-    base_filename = os.path.join(data_path, element_filename)
+    base_filename = os.path.join(picture_input_path, element_filename)
     print(base_filename)
     img = cv2.imread(base_filename)
     rows, cols = img.shape[:2]
@@ -63,7 +66,7 @@ for xml_file in xml_paths:
             img_color = pca_color_augmentation(img)
             color_name = img_split[0] + '-color' + str(color)
             color_jpg = color_name + '.jpg'
-            new_path = os.path.join(img_path, color_jpg)  # join with augmented image path
+            new_path = os.path.join(augmented_img_path, color_jpg)  # join with augmented image path
             lines = [color_jpg, ',', str(x1), ',', str(y1), ',', str(x2), ',', str(y2), ',', class_name, '\n']
             pwd_lines.append(lines)
             if not os.path.isfile(new_path):
@@ -89,7 +92,7 @@ for xml_file in xml_paths:
                     f_str = 'f0'
 
                 new_name = color_name + '-' + f_str + '.jpg'
-                new_path = os.path.join(img_path, new_name)
+                new_path = os.path.join(augmented_img_path, new_name)
 
                 lines = [new_name, ',', str(f_x1), ',', str(f_y1), ',', str(f_x2), ',', str(f_y2), ',', class_name,
                          '\n']
@@ -106,7 +109,7 @@ for xml_file in xml_paths:
             angle_x2 = h - y1
             angle_y2 = x2
             new_name = color_name + '-' + 'rotate_90' + '.jpg'
-            new_path = os.path.join(img_path, new_name)
+            new_path = os.path.join(augmented_img_path, new_name)
             lines = [new_name, ',', str(angle_x1), ',', str(angle_y1), ',', str(angle_x2), ',', str(angle_y2), ',',
                      class_name, '\n']
             pwd_lines.append(lines)
@@ -120,7 +123,7 @@ for xml_file in xml_paths:
             ang_x2 = w - x1
             ang_y2 = h - y1
             new_name_180 = color_name + '-' + 'rotate_180' + '.jpg'
-            new_path_180 = os.path.join(img_path, new_name_180)
+            new_path_180 = os.path.join(augmented_img_path, new_name_180)
             lines_180 = [new_name_180, ',', str(ang_x1), ',', str(ang_y1), ',', str(ang_x2), ',', str(ang_y2), ',',
                          class_name, '\n']
             pwd_lines.append(lines_180)
@@ -135,7 +138,7 @@ for xml_file in xml_paths:
             an_x2 = y2
             an_y2 = w - x1
             new_name_270 = color_name + '-' + 'rotate_270' + '.jpg'
-            new_path_270 = os.path.join(img_path, new_name_270)
+            new_path_270 = os.path.join(augmented_img_path, new_name_270)
             lines_270 = [new_name_270, ',', str(an_x1), ',', str(an_y1), ',', str(an_x2), ',', str(an_y2), ',',
                          class_name, '\n']
             pwd_lines.append(lines_270)
@@ -144,7 +147,7 @@ for xml_file in xml_paths:
 
 # print(pwd_lines)
 if len(pwd_lines) > 0:
-    with open(out_path, 'w') as f:
+    with open(textfile_out_path, 'w') as f:
         for line in pwd_lines:
             f.writelines(line)
 

@@ -1,6 +1,6 @@
-import numpy as np
+import StaticMethods as sm
 
-datapath = "bb_box.txt"
+datapath = "AugmentedXmlDataPath.txt"
 savepath = "converted_annotation_in_txt\\"
 filepath = "file_name.txt"
 
@@ -30,6 +30,7 @@ def make_dataset(input_path):
         return all_data
 
 
+sm.createFolder(savepath)
 dataset = make_dataset(datapath)
 
 for i in range(len(dataset)):
