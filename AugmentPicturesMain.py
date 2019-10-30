@@ -1,5 +1,5 @@
 import CreateAugmentedData
 import CreateMultiTextFile
 import ConvertToVOC
-import CleanMesss
+import CleanMess
 print("Fertig")
