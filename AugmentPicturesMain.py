@@ -1,3 +1,4 @@
+import AugmentImageImageNetPolicy
 import CreateAugmentedData
 import CreateMultiTextFile
 import ConvertToVOC

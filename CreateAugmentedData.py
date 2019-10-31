@@ -61,7 +61,7 @@ for xml_file in xml_paths:
         y2 = int(round(float(obj_bbox.find('ymax').text)))
         # if you specify range(1) total number of augmented data is 6 for one image
         # 6 types of augmentation means pca, horizontal and vertical flip, 3 rotation
-        # if you specify range(2) total number of augmented data is 12 for one image
+        # if you specify range(2) total number of augmented data is 12 for one image (or multiply it as often as you want)
         for color in range(2):
             img_color = pca_color_augmentation(img)
             color_name = img_split[0] + '-color' + str(color)
