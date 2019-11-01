@@ -100,21 +100,7 @@ for xml_file in xml_paths:
                 if not os.path.isfile(new_path):
                     cv2.imwrite(new_path, f_img)
 
-            # for angle 90
-            img_transpose = np.transpose(img_color, (1, 0, 2))
-            img_90 = cv2.flip(img_transpose, 1)
-            h, w = img_color.shape[:2]
-            angle_x1 = h - y2
-            angle_y1 = x1
-            angle_x2 = h - y1
-            angle_y2 = x2
-            new_name = color_name + '-' + 'rotate_90' + '.jpg'
-            new_path = os.path.join(augmented_img_path, new_name)
-            lines = [new_name, ',', str(angle_x1), ',', str(angle_y1), ',', str(angle_x2), ',', str(angle_y2), ',',
-                     class_name, '\n']
-            pwd_lines.append(lines)
-            if not os.path.isfile(new_path):
-                cv2.imwrite(new_path, img_90)
+
 
             # for angle 180
             img_180 = cv2.flip(img_color, -1)
@@ -130,20 +116,6 @@ for xml_file in xml_paths:
             if not os.path.isfile(new_path_180):
                 cv2.imwrite(new_path_180, img_180)
 
-            # for angle 270
-            img_transpose_270 = np.transpose(img_color, (1, 0, 2))
-            img_270 = cv2.flip(img_transpose_270, 0)
-            an_x1 = y1
-            an_y1 = w - x2
-            an_x2 = y2
-            an_y2 = w - x1
-            new_name_270 = color_name + '-' + 'rotate_270' + '.jpg'
-            new_path_270 = os.path.join(augmented_img_path, new_name_270)
-            lines_270 = [new_name_270, ',', str(an_x1), ',', str(an_y1), ',', str(an_x2), ',', str(an_y2), ',',
-                         class_name, '\n']
-            pwd_lines.append(lines_270)
-            if not os.path.isfile(new_path_270):
-                cv2.imwrite(new_path_270, img_270)
 
 # print(pwd_lines)
 if len(pwd_lines) > 0:

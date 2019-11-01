@@ -1,6 +1,5 @@
 # AugmentImagesAndXML
 
-DISCLAIMER!! THE FUNCTION IS NOT TESTED YET
 
 ## Goal
 
@@ -10,11 +9,13 @@ I connected these snippets so that it is much easier and comfortable to use.
 
 ## What it does
 
-* creates 2 mirrowed pictures (horizontally + vertically)
-* creates 3 rotated pictures
-* creates 1 picture which colors are pca-distorted
+* creates 15 or 9 autoaugmented Images 
+* for each of these Images:
+    * creates 3 mirrowed pictures (horizontally + vertically)
+    * creates 1 picture which colors are pca-distorted
+    * (repeat twice with different pca-color distortions)   
 
-This process is repeated twice with different color distortions
+This creates from one image 15 x 4 x 2 = 120 or 9 x 4 x 2 = 72 augmented images.
 
 ## How to use
 
@@ -25,4 +26,6 @@ This process is repeated twice with different color distortions
 
 ## Things that can be changed
 
-If you don't want to have the solarize-option (reverses all PixelValues over threshold) change the Range of the for-loop in AugmentImageImagenetPolicy.py from 15 to 9.
+* If you don't want to have the solarize-option (reverses all PixelValues over threshold) change the Range of the for-loop in AugmentImageImagenetPolicy.py from 15 to 9.
+
+* If you want to use n x 6 instead of 12 augmentions change the Range of "for color in Range(2)" to n in the file CreateAugmentedData.py
