@@ -1,7 +1,5 @@
 # AugmentImagesAndXML
 
-DISCLAIMER!! THE FUNCTION IS NOT TESTED YET
-
 ## Goal
 
 The goal of this code is to to provide a easy to use and powerful data-augmenter which can be used to augment data (pictures and xml-files) for training object detection with machine learning, e.g. with Tensorflow(object detection).   
