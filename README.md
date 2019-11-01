@@ -22,3 +22,7 @@ This process is repeated twice with different color distortions
 2. Run "AugmentPicturesMain" in Python (Python 3.8 not yet supported, use 3.7)
 3. Wait...
 4. The augmented data can be found in "AugmentedImages" and "AugmentedXML"
+
+## Things that can be changed
+
+If you don't want to have the solarize-option (reverses all PixelValues over threshold) change the Range of the for-loop in AugmentImageImagenetPolicy.py from 15 to 9.
