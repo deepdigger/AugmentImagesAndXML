@@ -3,7 +3,9 @@ import shutil
 
 filesToRemove = ["AugmentedXmlDataPath.txt",
                  "file_name.txt",
-                 "converted_annotation_in_txt"]
+                 "converted_annotation_in_txt",
+                 "AutoAugmentImages",
+                 "AutoAugmentXml"]
 for file in filesToRemove:
     try:
         os.remove(file)

@@ -11,8 +11,8 @@ import os
 import xml.etree.ElementTree as ET
 import StaticMethods as sm
 
-xml_input_folder_path = "XML_Files_Input"
-picture_input_path = "Pictures"
+xml_input_folder_path = "AutoAugmentXML"
+picture_input_path = "AutoAugmentImages"
 textfile_out_path = "AugmentedXmlDataPath.txt"
 augmented_img_path = "AugmentedImages"
 
@@ -44,7 +44,7 @@ for xml_file in xml_paths:
     element_objs = element.findall('object')
     element_filename = element.find('filename').text
     base_filename = os.path.join(picture_input_path, element_filename)
-    print(base_filename)
+    print("Create augmention for file: %s" % base_filename)
     img = cv2.imread(base_filename)
     rows, cols = img.shape[:2]
 
