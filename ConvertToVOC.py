@@ -3,7 +3,7 @@ import xml.etree.cElementTree as ET
 from PIL import Image
 import StaticMethods as sm
 
-ANNOTATIONS_DIR_PREFIX = "converted_annotation_in_txt\\"
+ANNOTATIONS_DIR_PREFIX = "converted_annotation_in_txt/"
 AUGMENTED_XML_DATA_PATH = "AugmentedXML"
 sm.createFolder(AUGMENTED_XML_DATA_PATH)
 
@@ -38,12 +38,12 @@ def create_file(file_prefix, width, height, voc_labels):
     root = create_root(file_prefix, width, height)
     root = create_object_annotation(root, voc_labels)
     tree = ET.ElementTree(root)
-    tree.write("AugmentedXML\\{}.xml".format(file_prefix))
+    tree.write("AugmentedXML/{}.xml".format(file_prefix))
 
 
 def read_file(file_path):
     file_prefix = file_path.split(".jpg")[0]
-    file_path_data = "converted_annotation_in_txt\\" + file_path
+    file_path_data = "converted_annotation_in_txt/" + file_path
     print("the file path data", file_path_data)
     image_file_name = "{}.jpg".format(file_prefix)
     img = Image.open("{}/{}".format("AugmentedImages", image_file_name))

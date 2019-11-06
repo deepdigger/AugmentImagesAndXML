@@ -1,7 +1,7 @@
 import StaticMethods as sm
 
 datapath = "AugmentedXmlDataPath.txt"
-savepath = "converted_annotation_in_txt\\"
+savepath = "converted_annotation_in_txt"
 filepath = "file_name.txt"
 
 
@@ -42,7 +42,7 @@ for i in range(len(dataset)):
         file_name = "{}\n".format(dataset_name)
         fn.write(file_name)
 
-    with open(savepath + str(dataset_name) + ".txt", 'w') as f:
+    with open(savepath +"/"+ str(dataset_name) + ".txt", 'w') as f:
         for j in range(len(sep_dataset)):
             save_dataset = sep_dataset[j]
 
