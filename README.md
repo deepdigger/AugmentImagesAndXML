@@ -3,7 +3,7 @@
 ## Goal
 
 The goal of this code is to to provide a easy to use and powerful data-augmenter which can be used to augment data (pictures and xml-files) for training object detection with machine learning, e.g. with Tensorflow(object detection).   
-The Code is based on an [article](https://medium.com/@bhuwanbhattarai/image-data-augmentation-and-parsing-into-an-xml-file-in-pascal-voc-format-for-object-detection-4cca3d24b33b) which provides three code snippets for data augmentation.   
+The Code is based on an [article](https://medium.com/@bhuwanbhattarai/image-data-augmentation-and-parsing-into-an-xml-file-in-pascal-voc-format-for-object-detection-4cca3d24b33b) which provides three code snippets for data augmentation and on this [article](https://towardsdatascience.com/how-to-improve-your-image-classifier-with-googles-autoaugment-77643f0be0c9) which tells you which method to use for augmention.   
 I connected these snippets so that it is much easier and comfortable to use.
 
 ## What it does
